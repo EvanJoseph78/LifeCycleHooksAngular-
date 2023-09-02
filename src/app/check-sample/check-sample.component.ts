@@ -4,6 +4,7 @@ import {
   AfterViewChecked,
   Component,
   DoCheck,
+  OnDestroy,
   OnInit,
 } from "@angular/core";
 
@@ -18,11 +19,16 @@ export class CheckSampleComponent
     DoCheck,
     AfterContentChecked,
     AfterContentInit,
-    AfterViewChecked
+    AfterViewChecked,
+    OnDestroy
 {
   quantidade: number = 0;
 
   constructor() {}
+  ngOnDestroy(): void {
+    console.log("Adios mi amigo");
+    
+  }
 
   adicionar() {
     this.quantidade += 1;
@@ -32,9 +38,13 @@ export class CheckSampleComponent
     this.quantidade -= 1;
   }
 
+  //checked -> content -> view
+  
+  //quando o primeiro conteúdo é iniciado
   ngAfterContentInit(): void {
     console.log("ngAfterContentInit");
   }
+
   ngAfterViewChecked(): void {
     console.log("ngAfterViewChecked");
   }
